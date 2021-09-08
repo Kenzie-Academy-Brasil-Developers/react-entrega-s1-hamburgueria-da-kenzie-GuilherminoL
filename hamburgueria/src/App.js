@@ -24,6 +24,12 @@ function App() {
     }
   };
 
+  const removeItem = (id) => {
+    const output = currentSale.find((product) => product.id === id);
+    const outputIndex = output.indexOf(output);
+    currentSale.splice(outputIndex);
+  };
+
   const [products, setProducts] = useState([
     { id: 1, name: "Hamburguer", category: "Sanduíches", price: 7.99 },
     { id: 2, name: "X-Burguer", category: "Sanduíches", price: 8.99 },
@@ -39,7 +45,7 @@ function App() {
       <MenuContainer products={products} handleClick={handleClick} />
 
       <h2 className="cartTitle">Carrinho: </h2>
-      <MenuContainer products={currentSale} handleClick={handleClick} />
+      <MenuContainer products={currentSale} removeItem={removeItem} />
       <p className="totalPrice">SubTotal - {total}</p>
     </>
   );
