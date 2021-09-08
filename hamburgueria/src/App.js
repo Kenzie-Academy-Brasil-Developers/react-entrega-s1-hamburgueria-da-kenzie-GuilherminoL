@@ -1,9 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 import MenuContainer from "./components/MenuContainer";
 
 function App() {
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [currentSale, setCurrentSale] = useState([]);
+
   const showProducts = (productName) => {
     const output = products.filter((product) => {
       return product.name === productName;
@@ -11,22 +13,16 @@ function App() {
     setFilteredProducts(output);
   };
 
-  const calcTotal = () => {
-    const total = currentSale.reduce((acc, item) => {
-      return acc + item.price;
-    }, 0);
-    return total;
-  };
+  const total = currentSale
+    .reduce((acc, item) => item.price + acc, 0)
+    .toFixed(2);
+
   const handleClick = (id) => {
     const output = products.find((product) => product.id === id);
-    if (!currentSale.find((item) => item.id === output.id)) {
+    if (!currentSale.includes(output)) {
       setCurrentSale([...currentSale, output]);
-      setCartTotal(calcTotal());
     }
   };
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [currentSale, setCurrentSale] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
 
   const [products, setProducts] = useState([
     { id: 1, name: "Hamburguer", category: "Sanduíches", price: 7.99 },
@@ -41,7 +37,10 @@ function App() {
   return (
     <>
       <MenuContainer products={products} handleClick={handleClick} />
-      <p>SubTotal - {cartTotal}</p>
+
+      <h2 className="cartTitle">Carrinho: </h2>
+      <MenuContainer products={currentSale} handleClick={handleClick} />
+      <p className="totalPrice">SubTotal - {total}</p>
     </>
   );
 }
