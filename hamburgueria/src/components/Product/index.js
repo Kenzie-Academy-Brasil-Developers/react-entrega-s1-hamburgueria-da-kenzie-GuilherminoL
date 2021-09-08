@@ -5,7 +5,7 @@ const Product = ({ item, handleClick }) => {
       <h3>{item.name}</h3>
       <p>Categoria - {item.category}</p>
       <p>Preço - {item.price}</p>
-      <button onClick={() => handleClick(item.id)}>
+      <button className="addButton" onClick={() => handleClick(item.id)}>
         Adicionar ao carrinho
       </button>
     </li>

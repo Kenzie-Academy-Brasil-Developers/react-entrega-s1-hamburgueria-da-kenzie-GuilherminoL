@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import MenuContainer from "./components/MenuContainer";
+import CartContainer from "./components/CartContainer";
 
 function App() {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -26,8 +27,9 @@ function App() {
 
   const removeItem = (id) => {
     const output = currentSale.find((product) => product.id === id);
-    const outputIndex = output.indexOf(output);
-    currentSale.splice(outputIndex);
+    const outputIndex = currentSale.indexOf(output);
+    currentSale.splice(outputIndex, 1);
+    setCurrentSale([...currentSale]);
   };
 
   const [products, setProducts] = useState([
@@ -41,13 +43,13 @@ function App() {
   ]);
 
   return (
-    <>
+    <body className="body">
       <MenuContainer products={products} handleClick={handleClick} />
 
       <h2 className="cartTitle">Carrinho: </h2>
-      <MenuContainer products={currentSale} removeItem={removeItem} />
+      <CartContainer products={currentSale} removeItem={removeItem} />
       <p className="totalPrice">SubTotal - {total}</p>
-    </>
+    </body>
   );
 }
 
