@@ -6,12 +6,14 @@ import CartContainer from "./components/CartContainer";
 function App() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentSale, setCurrentSale] = useState([]);
+  const [currentSearch, setCurrentSearch] = useState("");
 
   const showProducts = (productName) => {
     const output = products.filter((product) => {
       return product.name === productName;
     });
     setFilteredProducts(output);
+    console.log(output, filteredProducts);
   };
 
   const total = currentSale
@@ -44,8 +46,27 @@ function App() {
 
   return (
     <body className="body">
-      <MenuContainer products={products} handleClick={handleClick} />
+      <h1 className="pageTitle">Hamburgueria da Kenzie</h1>
+      <div className="searchSection">
+        <input
+          className="searchSectionInput"
+          type="text"
+          value={currentSearch}
+          onChange={(e) => setCurrentSearch(e.target.value)}
+        />
+        <button
+          className="searchSectionButton"
+          onClick={() => showProducts(currentSearch)}
+        >
+          Procurar
+        </button>
+      </div>
 
+      {filteredProducts.length > 0 ? (
+        <MenuContainer products={filteredProducts} handleClick={handleClick} />
+      ) : (
+        <MenuContainer products={products} handleClick={handleClick} />
+      )}
       <h2 className="cartTitle">Carrinho: </h2>
       <CartContainer products={currentSale} removeItem={removeItem} />
       <p className="totalPrice">SubTotal - {total}</p>
