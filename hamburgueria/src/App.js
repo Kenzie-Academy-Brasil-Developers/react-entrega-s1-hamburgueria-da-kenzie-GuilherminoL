@@ -52,6 +52,7 @@ function App() {
           className="searchSectionInput"
           type="text"
           value={currentSearch}
+          placeholder="Procure um produto ..."
           onChange={(e) => setCurrentSearch(e.target.value)}
         />
         <button

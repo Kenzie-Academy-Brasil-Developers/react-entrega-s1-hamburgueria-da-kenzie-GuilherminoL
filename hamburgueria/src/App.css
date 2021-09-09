@@ -52,6 +52,27 @@
   padding: 15px;
   text-align: center;
 }
+.searchSectionInput {
+  padding: 10px 15px;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid transparent;
+}
+.searchSectionButton {
+  padding: 10px 15px;
+  border-radius: 0 10px 10px 0;
+  border: 1px solid transparent;
+  color: #fff;
+  background-color: #0b66c2;
+}
+.searchSectionButton:hover {
+  transition: 0.3s;
+  border: 1px solid #0b66c2;
+  color: #0b66c2;
+  background-color: #fff;
+}
+MenuContainer {
+  min-height: 180px;
+}
 
 @keyframes App-logo-spin {
   from {
