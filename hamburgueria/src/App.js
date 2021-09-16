@@ -10,7 +10,7 @@ function App() {
 
   const showProducts = (productName) => {
     const output = products.filter((product) => {
-      return product.name === productName;
+      return product.name.toLowerCase() === productName.toLowerCase();
     });
     setFilteredProducts(output);
     console.log(output, filteredProducts);

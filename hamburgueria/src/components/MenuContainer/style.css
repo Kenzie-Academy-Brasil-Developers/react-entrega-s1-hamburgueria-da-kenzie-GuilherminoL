@@ -4,6 +4,6 @@
   flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 0;
-  padding-top: 16px;
+  padding: 16px 0;
   min-width: 181.44px;
 }
