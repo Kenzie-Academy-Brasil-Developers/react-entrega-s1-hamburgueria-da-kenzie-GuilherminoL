@@ -1,8 +1,8 @@
 .body {
   margin: 0;
   color: #fff;
+  min-height: 100vh;
   height: 100%;
-
   background-image: url("https://cdn.minhareceita.com.br/2021/04/shutterstock_581788279-scaled.jpg");
   background-size: cover;
   background-color: #282c34;
